@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  api-core:
+      container_name: api_backend
+      image: paloonya/aye-api:7.5
+      ports:
+        - 5000:5000
+        - 8888:8888
+      restart: unless-stopped
+  IC:
+      container_name: ic_backend
+      image: paloonya/ic:8.3
+      ports:
+        - 5001:5000
+        - 8889:8889
+      restart: unless-stopped
+  frontend:
+      container_name: react_frontend
+      image: paloonya/frontend:2.7
+      ports:
+        - 8000:3000
+      restart: unless-stopped
+  mongodb:
+      image: mongo
+      container_name: backend_mongodb
